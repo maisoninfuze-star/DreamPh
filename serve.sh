@@ -2,7 +2,7 @@
 # Centre Dream PH — local preview server control
 # Usage: ./serve.sh start | stop | restart | status
 cd "$(dirname "$0")" || exit 1
-PORT="${PORT:-8190}"
+PORT="${PORT:-8200}"
 PIDFILE=".server.pid"
 NODE="$(command -v node || echo /usr/local/bin/node)"
 

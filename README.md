@@ -1,18 +1,16 @@
 # Centre Dream PH — Wellness Asian Spa
 
-Marketing website for **Centre Dream PH**, an Asian wellness spa in Casablanca.
-Massages (signature, traditional, Thai), hammam rituals, private jacuzzi & VIP, and exceptional packages.
+Editorial one-page site for **Centre Dream PH**, an Asian wellness spa in Casablanca.
+Hero, services (massages / hammam / forfaits), scrollable menu carousel (La Carte),
+experience, signature tarifs and contact/réservation.
 
-## Tech
-Static site (HTML/CSS/JS) with jQuery, Webflow runtime and Luxy smooth scroll.
-- Brand theme: `css/theme-cdph.css` (ivory · burgundy · gold · espresso)
-- FR/EN toggle: `js/i18n.js`
-- Menu / pricing posters: `images/`
+Static site (HTML/CSS/JS) — Cormorant Garamond + Jost, warm ivory/burgundy/gold palette.
 
 ## Run locally
 ```bash
-./serve.sh start     # http://localhost:8190
+./serve.sh start     # http://localhost:8200
 ./serve.sh stop
 ./serve.sh restart
-./serve.sh status
 ```
+
+The previous (v1) design is preserved on the `v1-tangan-design` branch.

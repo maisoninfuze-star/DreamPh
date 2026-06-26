@@ -1,6 +1,6 @@
 server.mjs
 serve.sh
-mirror.mjs
-gen_fal.py
+gen_images.py
 *.log
 .server.pid
+DESIGN.md
