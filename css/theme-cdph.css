@@ -100,7 +100,11 @@ hr, .divider, .line, .separator, .border_bottom, .border_top{
 /* =========================================================
    Phone friendliness
    ========================================================= */
-html, body{ overflow-x: hidden; max-width: 100%; }
+/* prevent sideways scroll WITHOUT breaking iOS vertical scrolling:
+   overflow-x:hidden on html/body locks touch scrolling on iOS Safari,
+   so use overflow-x:clip (no scroll container) on body only. */
+html, body{ max-width: 100%; }
+body{ overflow-x: clip; }
 img, video{ max-width: 100%; }
 
 /* burger icon adapts like the nav links */
