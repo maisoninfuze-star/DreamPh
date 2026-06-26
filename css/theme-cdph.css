@@ -96,3 +96,40 @@ hr, .divider, .line, .separator, .border_bottom, .border_top{
 ::-webkit-scrollbar{ width: 10px; }
 ::-webkit-scrollbar-track{ background: var(--cdph-cream-2); }
 ::-webkit-scrollbar-thumb{ background: var(--cdph-gold); border-radius: 8px; }
+
+/* =========================================================
+   Phone friendliness
+   ========================================================= */
+html, body{ overflow-x: hidden; max-width: 100%; }
+img, video{ max-width: 100%; }
+
+/* burger icon adapts like the nav links */
+.ic_burger_line{ background-color: var(--cdph-burgundy) !important; transition: background-color .35s ease; }
+body.nav-on-dark .ic_burger_line{ background-color: var(--cdph-cream) !important; }
+
+@media screen and (max-width: 991px){
+  /* Only style the burger menu when it is actually OPEN (body.menu-open, set via JS).
+     Webflow's over-left slide + data-doc-height otherwise leave it off-screen / document-tall. */
+  body.menu-open .w-nav-overlay{ background-color: var(--cdph-cream) !important; }
+  body.menu-open .nav-menu{ background-color: transparent !important; }
+  body.menu-open .w-nav-overlay{ position: fixed !important; inset: 0 !important; width: 100% !important;
+                  height: 100vh !important; overflow-y: auto !important; }
+  body.menu-open .nav-menu{ transform: none !important; width: 100% !important; height: 100vh !important;
+             min-height: 0 !important; display: flex !important; flex-direction: column;
+             justify-content: center; padding: 12vh 8vw; }
+  body.menu-open .content_nav_mobile{ display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+  body.menu-open .nav_link_2{ color: var(--cdph-burgundy) !important; font-size: 2rem !important; line-height: 1.3; }
+  body.menu-open .i18n-toggle{ color: var(--cdph-burgundy) !important; font-size: 1.4rem !important; }
+  body.menu-open .i18n-toggle-wrap{ margin-top: 18px; }
+  /* burger lines stay dark while the cream panel is open */
+  body.menu-open .ic_burger_line{ background-color: var(--cdph-burgundy) !important; }
+}
+
+@media screen and (max-width: 767px){
+  /* posters: stack full width, never force horizontal scroll on small phones */
+  .dreamph_menu_card{ min-width: 0 !important; width: 100% !important; }
+  .dreamph_menu_grid{ gap: 22px; }
+  .dreamph_menu_section{ padding: 14vh 5vw 9vh; }
+  /* comfortable round CTA tap target */
+  .cta_wrapper{ min-width: 124px; min-height: 124px; }
+}

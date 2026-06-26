@@ -197,4 +197,17 @@
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", navContrast);
   else navContrast();
+
+  /* ---- Mobile burger: mirror Webflow's open state onto body.menu-open ---- */
+  function menuState() {
+    var btn = document.querySelector(".menu-button-2, .w-nav-button");
+    if (!btn) return;
+    var sync = function () {
+      document.body.classList.toggle("menu-open", btn.classList.contains("w--open"));
+    };
+    new MutationObserver(sync).observe(btn, { attributes: true, attributeFilter: ["class"] });
+    sync();
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", menuState);
+  else menuState();
 })();
