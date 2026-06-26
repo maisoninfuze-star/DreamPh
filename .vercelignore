@@ -1,0 +1,6 @@
+server.mjs
+serve.sh
+mirror.mjs
+gen_fal.py
+*.log
+.server.pid
