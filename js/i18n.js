@@ -211,3 +211,42 @@
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", menuState);
   else menuState();
 })();
+
+/* ---- Mobile scroll-reveal: re-show & animate elements Webflow hides on phones ---- */
+(function () {
+  function start() {
+    var isSmall = window.matchMedia("(max-width: 991px)").matches;
+    var isTouch = ("ontouchstart" in window) || navigator.maxTouchPoints > 0;
+    if (!isSmall && !isTouch) return; // desktop keeps native Webflow animations
+
+    // Elements Webflow left at opacity:0 as IX2 initial states.
+    var els = [].slice.call(
+      document.querySelectorAll('[style*="opacity:0"], [style*="opacity: 0"]')
+    ).filter(function (el) {
+      // skip tiny/util nodes and the page-transition overlay
+      if (el.closest(".black_overlay_out, [class*='black_overlay']")) return false;
+      return el.offsetParent !== null || el.getBoundingClientRect().height > 0;
+    });
+    if (!els.length) return;
+
+    els.forEach(function (el) { el.classList.add("cdph-reveal"); });
+
+    if (!("IntersectionObserver" in window)) {
+      els.forEach(function (el) { el.classList.add("cdph-in"); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("cdph-in"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.06, rootMargin: "0px 0px -6% 0px" });
+    els.forEach(function (el) { io.observe(el); });
+
+    // safety net: anything still hidden after 3.5s gets shown
+    setTimeout(function () {
+      els.forEach(function (el) { if (!el.classList.contains("cdph-in")) el.classList.add("cdph-in"); });
+    }, 3500);
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
+  else start();
+})();

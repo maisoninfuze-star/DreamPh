@@ -133,3 +133,19 @@ body.nav-on-dark .ic_burger_line{ background-color: var(--cdph-cream) !important
   /* comfortable round CTA tap target */
   .cta_wrapper{ min-width: 124px; min-height: 124px; }
 }
+
+/* =========================================================
+   Mobile scroll-reveal — Webflow disables IX2 animations on
+   phones, which leaves opacity:0 elements invisible. On touch
+   / small screens we re-reveal them with a gentle fade-up.
+   ========================================================= */
+@media screen and (max-width: 991px){
+  .cdph-reveal{
+    opacity: 0 !important;
+    transform: translateY(42px) !important;
+    transition: opacity .85s cubic-bezier(.22,.61,.36,1),
+                transform .85s cubic-bezier(.22,.61,.36,1);
+    will-change: opacity, transform;
+  }
+  .cdph-reveal.cdph-in{ opacity: 1 !important; transform: none !important; }
+}
